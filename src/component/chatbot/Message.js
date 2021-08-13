@@ -42,7 +42,7 @@ const Message = () => {
   </div>
   <div className="clear"></div>
   <div className="from-them">
-  <p>sdfsdfdsf</p>
+  <p>sdfsdㄴㄴfdsf</p>
   
 </div>
   </div>
