@@ -10,11 +10,10 @@ const Card = () => {
         speed: 200,
         slidesToShow: 1,
         slidesToScroll: 1,
-
       };
 
       return (
-          <div style ={{textAlign :"center"}}>
+          <div className = "cardListItem">
         <Slider {...settings} >
         <div>
         <h3 >1</h3>

@@ -28,6 +28,7 @@ section div {
   color: white;
   background: #0B93F6;
   border-radius: 25px;
+  max-width: 200px;
   float: right;
 }
 .from-me:before {
@@ -69,24 +70,26 @@ section div {
 //   }
 
 .from-them {
+  float: left;
   position: relative;
   padding: 2px 20px;
   background: #E5E5EA;
   border-radius: 25px;
+  max-width: 200px;
   color: black;
-  float: left;
+  text-align: left;
 }
-.from-them:before {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  bottom: -2px;
-  left: -7px;
-  height: 20px;
-  border-left: 20px solid black;
-  border-bottom-right-radius: 16px 14px;
-  -webkit-transform: translate(0, -2px);
-}
+// .from-them:before {
+//   content: "";
+//   position: absolute;
+//   z-index: 2;
+//   bottom: -2px;
+//   left: -7px;
+//   height: 20px;
+//   border-left: 20px solid black;
+//   border-bottom-right-radius: 16px 14px;
+//   -webkit-transform: translate(0, -2px);
+// } //챗봇 말꼬리 부분
 .from-them:after {
   content: "";
   position: absolute;
@@ -98,4 +101,17 @@ section div {
   background: #81DAF5;
   border-bottom-right-radius: 10px;
   -webkit-transform: translate(-30px, -2px);
+}
+
+
+
+
+.testClass {
+  text-align: right;
+  overflow : auto ;
+  height : 400px;
+  width : 350px ;
+  // width : 100% ;
+  overflow-x: hidden;
+  // overflowX : 
 }
