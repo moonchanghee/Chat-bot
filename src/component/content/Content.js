@@ -1,6 +1,6 @@
 import React,{useState,useRef,useEffect} from 'react';
 import {Layout,Input} from 'antd'
-import Messeage from '../chatbot/Message'
+import Messeage from '../chatbot/message/Message'
 import Headers from '../header/Header'
 import Footers from '../footer/Footer'
 import "./Content.scss"
