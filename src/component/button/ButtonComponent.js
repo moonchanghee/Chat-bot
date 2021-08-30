@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
 import {MdAdd} from 'react-icons/md'
-import {Button, Popover} from 'antd'
+import {Button, Popover,Tooltip} from 'antd'
 import content from '../content/Content'
 import "./Button.scss"
 // import {ChangeConsumer} from '../../context/ChangeContext'
@@ -18,8 +18,14 @@ const value = useContext(ChangeContext)
             onVisibleChange = {value.actions.visibleChange}
             >
             <div className = "Button">
-                <Button type="primary" shape="circle" icon={value.state.icon} onClick = {value.actions.changeClilck}/>
-        </div>  
+                <Tooltip title="챗봇">
+                <Button
+                type="primary"
+                shape="circle" 
+                size="large"
+                icon={value.state.icon} onClick = {value.actions.changeClilck}/>
+                </Tooltip>
+                </div>  
             </Popover>
     
         </>

@@ -13,7 +13,7 @@ const Content = () => {
     return (
         <div >
     <Layout  >
-    <Header style={{backgroundColor : "#81DAF5" , width : "350px"}}><Headers/></Header>
+    <Header style ={{backgroundColor : "#A4A4A4"}} ><Headers/></Header>
     <Content>
     <Messeage />
     </Content>

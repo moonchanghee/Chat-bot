@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Category from '../component/chatbot/category/Category';
+import Card from '../component/chatbot/card/Card'
 import Axios from 'axios'
-//챗봇 open close //1이면 사람 0이면 로봇
+
+//1 사람 0 챗봇
 const MsgContext = React.createContext()
 const MsgProvider = ({children }) => {
 
@@ -23,12 +25,12 @@ const MsgProvider = ({children }) => {
     }
     const guide = () => {
         console.log("안내")
-        setMsgList( () => [...msgList ,{user : 0, msg : "안내"}])
+        setMsgList( () => [...msgList ,{user : 0, msg : <Category></Category>}])
     }
 
     const goodsSearch = () => {
         console.log("상품조회")
-        setMsgList( () => [...msgList ,{user : 0, msg : "상품조회"}])
+        setMsgList(() => [...msgList ,{user : 0, msg : <Card></Card>}])
 
     }
     const goodsReser = () => {
@@ -43,7 +45,9 @@ const MsgProvider = ({children }) => {
         console.log("취소")
         setMsgList( () => [...msgList ,{user : 0, msg : "취소"}])
     }
-
+    // const goodsSearch2 = () => {
+    //     setMsgList( () => [...msgList ,{user : 0, msg : <Card></Card>}])
+    // }
 
     
     const value = {

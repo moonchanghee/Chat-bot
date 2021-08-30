@@ -4,10 +4,6 @@ body {
   font-weight: normal;
 }
 
-// section {
-//   max-width: 450px;
-//   margin: 50px auto;
-// }
 section div {
 //   max-width: 255px;
   word-wrap: break-word;
@@ -25,8 +21,10 @@ section div {
 .from-me {
   position: relative;
   padding: 1px 20px;
-  color: white;
-  background: #0B93F6;
+  // color: white;
+  color: black;
+  // background: #0B93F6;
+  background: #FFFF00;
   border-radius: 25px;
   max-width: 200px;
   float: right;
@@ -56,6 +54,32 @@ section div {
   -webkit-transform: translate(-30px, -2px,);
 }
 
+.from-them {
+  float: left;
+  position: relative;
+  padding: 2px 20px;
+  background: #E5E5EA;
+  border-radius: 25px;
+  max-width: 300px;
+  color: black;
+  text-align: left;
+}
+
+
+.testClass {
+  text-align: right;
+  overflow : auto ;
+  height : 400px;
+  width : 340px ;
+  // width : 100% ;
+  overflow-x: hidden;
+  margin-left: 0;
+  // overflowX : 
+}
+
+
+
+
 // .from-me:after {
 //     content: "";
 //     position: absolute;
@@ -69,16 +93,6 @@ section div {
 //     -webkit-transform: translate(-30px, -2px);
 //   }
 
-.from-them {
-  float: left;
-  position: relative;
-  padding: 2px 20px;
-  background: #E5E5EA;
-  border-radius: 25px;
-  max-width: 300px;
-  color: black;
-  text-align: left;
-}
 // .from-them:before {
 //   content: "";
 //   position: absolute;
@@ -90,45 +104,35 @@ section div {
 //   border-bottom-right-radius: 16px 14px;
 //   -webkit-transform: translate(0, -2px);
 // } //챗봇 말꼬리 부분
-.from-them:after {
-  content: "";
-  position: absolute;
-  z-index: 3;
-  bottom: -2px;
-  left: 4px;
-  width: 26px;
-  height: 20px;
-  background: #81DAF5;
-  border-bottom-right-radius: 10px;
-  -webkit-transform: translate(-30px, -2px);
-}
+// .from-them:after {
+//   content: "";
+//   position: absolute;
+//   z-index: 3;
+//   bottom: -2px;
+//   left: 4px;
+//   width: 26px;
+//   height: 20px;
+//   background: #81DAF5;
+//   border-bottom-right-radius: 10px;
+//   -webkit-transform: translate(-30px, -2px);
+// }
 
 
 
 
-.testClass {
-  text-align: right;
-  overflow : auto ;
-  height : 400px;
-  width : 340px ;
-  // width : 100% ;
-  overflow-x: hidden;
-  // overflowX : 
-}
-
-.from-them1 {
-  float: left;
-  position: relative;
-  padding: 2px 20px;
-  background: #E5E5EA;
-  border-radius: 25px;
-  // max-width: 800px;
-  max-height: 600px;
-  // height: 200px;
-  color: black;
-  text-align: left;
-  width: 300px;
-}
+// .from-them1 {
+//   float: left;
+//   position: relative;
+//   padding: 2px 20px;
+//   background: #E5E5EA;
+//   border-radius: 25px;
+//   // max-width: 800px;
+//   max-height: 600px;
+//   // height: 200px;
+//   color: black;
+//   text-align: left;
+//   width: 300px;
+// }
 // .from-them1:after {
 //   content: "";
 //   position: absolute;

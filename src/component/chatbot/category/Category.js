@@ -14,7 +14,7 @@ const Category = () => {
    
         안녕하세요 챗봇입니다
           <div style ={{width : "230px"}}>
-        <Button block onClick = {value.actions.guide}>공지사항 안내</Button>
+        <Button block onClick = {value.actions.guide}>카테고리 안내</Button>
         <div className="clear"></div>
         <Button block onClick = {value.actions.goodsSearch}>상품조회</Button>
         <div className="clear"></div>

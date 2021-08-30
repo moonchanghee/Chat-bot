@@ -17,7 +17,7 @@ const Card = () => {
         <Slider {...settings} >
         <div>
         <h3 >1</h3>
-        <p>sdfsdf</p>
+        <p>상품상품</p>
       </div>
       <div>
         <h3>2</h3>
