@@ -14,7 +14,7 @@ const GoodsHeadCount = () => {
 
         value.actions.setCardShow(true)
         value.actions.setMsgList(() => 
-        [...value.state.msgList, {user : 0, msg : "검색결과 입니다"} ]
+        [...value.state.msgList, {user : 0, msg : "검색결과 입니다" , type : 1} ]
     )
     }
     return (
