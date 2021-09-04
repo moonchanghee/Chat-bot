@@ -12,13 +12,16 @@ const Content = () => {
  
     return (
         <div >
-    <Layout  >
-    <Header style ={{backgroundColor : "#A4A4A4"}} ><Headers/></Header>
-    <Content>
+    <div className = "header">
+    <Headers/>
+    </div>
+    <div className = "body">
     <Messeage />
-    </Content>
-  </Layout>
-  <Footers/>
+    </div>
+    <div className = "footer">
+    <Footers/>
+    </div>
+    
   </div>
     );
 };

@@ -5,7 +5,7 @@ body {
 }
 
 section div {
-//   max-width: 255px;
+  //   max-width: 255px;
   word-wrap: break-word;
   margin-bottom: 20px;
   line-height: 24px;
@@ -23,8 +23,8 @@ section div {
   padding: 1px 20px;
   // color: white;
   color: black;
-  // background: #0B93F6;
-  background: #FFFF00;
+  background: yellow;
+  text-align: left;
   border-radius: 25px;
   max-width: 200px;
   float: right;
@@ -36,7 +36,7 @@ section div {
   bottom: -2px;
   right: -7px;
   height: 20px;
-  border-right: 20px solid #0B93F6;
+  border-right: 20px solid #0b93f6;
   border-bottom-left-radius: 16px 14px;
   -webkit-transform: translate(0, -2px);
 }
@@ -48,100 +48,35 @@ section div {
   right: -30px;
   width: 15px;
   height: 20px;
-//   background: #0B93F6;
-// background: #ffffff;
+  //   background: #0B93F6;
+  // background: #ffffff;
   border-bottom-left-radius: 300px;
-  -webkit-transform: translate(-30px, -2px,);
+  -webkit-transform: translate(-30px, -2px);
 }
 
 .from-them {
   float: left;
   position: relative;
   padding: 2px 20px;
-  background: #E5E5EA;
+  background: #e5e5ea;
   border-radius: 25px;
   max-width: 300px;
   color: black;
   text-align: left;
 }
 
-
 .testClass {
   text-align: right;
-  overflow : auto ;
-  height : 400px;
-  width : 340px ;
-  // width : 100% ;
+  overflow: auto;
+  height: 500px;
+  width: 400px;
   overflow-x: hidden;
   margin-left: 0;
-  // overflowX : 
+  background-color: white;
 }
 
-
-
-
-// .from-me:after {
-//     content: "";
-//     position: absolute;
-//     z-index: 1;
-//     bottom: -2px;
-//     right: -56px;
-//     width: 26px;
-//     height: 20px;
-//     // background: white;
-//     border-bottom-left-radius: 10px;
-//     -webkit-transform: translate(-30px, -2px);
-//   }
-
-// .from-them:before {
-//   content: "";
-//   position: absolute;
-//   z-index: 2;
-//   bottom: -2px;
-//   left: -7px;
-//   height: 20px;
-//   border-left: 20px solid black;
-//   border-bottom-right-radius: 16px 14px;
-//   -webkit-transform: translate(0, -2px);
-// } //챗봇 말꼬리 부분
-// .from-them:after {
-//   content: "";
-//   position: absolute;
-//   z-index: 3;
-//   bottom: -2px;
-//   left: 4px;
-//   width: 26px;
-//   height: 20px;
-//   background: #81DAF5;
-//   border-bottom-right-radius: 10px;
-//   -webkit-transform: translate(-30px, -2px);
-// }
-
-
-
-
-// .from-them1 {
-//   float: left;
-//   position: relative;
-//   padding: 2px 20px;
-//   background: #E5E5EA;
-//   border-radius: 25px;
-//   // max-width: 800px;
-//   max-height: 600px;
-//   // height: 200px;
-//   color: black;
-//   text-align: left;
-//   width: 300px;
-// }
-// .from-them1:after {
-//   content: "";
-//   position: absolute;
-//   z-index: 3;
-//   bottom: -2px;
-//   left: 4px;
-//   width: 26px;
-//   height: 20px;
-//   background: #81DAF5;
-//   border-bottom-right-radius: 10px;
-//   -webkit-transform: translate(-30px, -2px);
-// }
+.cards {
+  clear: both;
+  width: 335px;
+  height: 200px;
+}

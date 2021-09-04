@@ -6,12 +6,7 @@ const Category = () => {
     const value = useContext(MessageContext)
     return (
         <>
-        {/**<div style ={{float : "left"}}>
-        <Avatar icon={<UserOutlined />} />
-          챗봇
-    </div>**/}
         <div className="clear"></div>
-   
         안녕하세요 챗봇입니다
           <div style ={{width : "230px"}}>
         <Button block onClick = {value.actions.guide}>카테고리 안내</Button>
