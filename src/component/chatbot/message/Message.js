@@ -1,4 +1,4 @@
-import React, {useRef, useContext,useEffect, useState} from 'react';
+import React, {useRef, useContext,useEffect} from 'react';
 import {Avatar} from 'antd';
 import MsgContext from '../../../context/MessageContext'
 import "./Message.scss"

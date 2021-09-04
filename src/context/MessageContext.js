@@ -15,11 +15,9 @@ const MsgProvider = ({children }) => {
         user:0,msg : <Category></Category>
     }])
 
-    const onSearch = (value)=>{
-        console.log(value)
-        setSubmitVal(value)
+    const onSearch = ()=>{
         setInputVal("")
-        setMsgList(()=>[...msgList, {user:1, msg: value, type : 0}] )
+        setMsgList(()=>[...msgList, {user:1, msg: inputVal, type : 0}] )
         console.log(msgList)
         const body = {
             data : 1

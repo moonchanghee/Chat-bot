@@ -20,13 +20,14 @@ const value = useContext(ChangeContext)
             <div className = "Button">
                 <Tooltip title="챗봇">
                 <Button
-                type="primary"
+                style = {{ width:"40px", height : "40px"}}
                 shape="circle" 
                 size="large"
                 icon={value.state.icon} onClick = {value.actions.changeClilck}/>
                 </Tooltip>
                 </div>  
             </Popover>
+
     
         </>
     );

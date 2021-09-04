@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { AliwangwangOutlined,ShrinkOutlined  } from '@ant-design/icons';
+import { AliwangwangOutlined,ShrinkOutlined,MessageOutlined   } from '@ant-design/icons';
 
 //챗봇 open close
 const ChangeContext = React.createContext()
 const ChangeProvider = ({children }) => {
     const [bool,setBool] = useState(false)  
-    const icon = bool ? <ShrinkOutlined /> : <AliwangwangOutlined />   
+    const icon = bool ? <ShrinkOutlined /> : <MessageOutlined  />   
 
     const changeClilck = () => {
         setBool(!bool)

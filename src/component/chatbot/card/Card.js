@@ -116,10 +116,10 @@ const items = [
 
 const itemBtn = (e,item) => {
 
-  // const msg = e.target.getAttribute('data');
-  // console.log(msg )
-  // // console.log(e.target)
-console.log(item)
+  const msg = e.target.getAttribute('data');
+  console.log(msg )
+  // console.log(e.target)
+// console.log(item)
 }
 
 export default class Card extends Component {
@@ -148,7 +148,6 @@ export default class Card extends Component {
                   {item.msg}
                   <br/>
                   <button className = "itemButton"   data={item.id} onClick = {(e, item) => {itemBtn(e, item)}}>자세히보기</button>
-                  )
                   </div>
                   </ImageContainer>
 

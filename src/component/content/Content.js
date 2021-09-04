@@ -14,11 +14,13 @@ const Content = () => {
         <div >
     <div className = "header">
     <Headers/>
+    <hr/>
     </div>
     <div className = "body">
     <Messeage />
     </div>
     <div className = "footer">
+    <hr/>
     <Footers/>
     </div>
     
