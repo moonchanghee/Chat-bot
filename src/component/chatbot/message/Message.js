@@ -4,7 +4,11 @@ import MsgContext from '../../../context/MessageContext'
 import "./Message.scss"
 import { UserOutlined } from '@ant-design/icons';
 import Cards from '../card/Card'
+import Category from '../category/Category';
+import { BackTop } from 'antd';
+
 const Message = () => {
+
   const value = useContext(MsgContext)
   const boxs = useRef()
   let i = 1
@@ -16,6 +20,7 @@ const Message = () => {
       //  value.actions.setCardShow(true)
       }
     }, [value.state.msgList])
+
 
     // 상품 조회 카드
     const scrollToBottom = () => {
@@ -57,9 +62,14 @@ const Message = () => {
    ""
 
   }
+  {e.type2 ? 
+    <div className = "category">
+    <Category/> 
+    </div>:
+    ""
+  }
   </div>
   )}
-
   </div>
    </>
     );

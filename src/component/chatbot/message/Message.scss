@@ -4,7 +4,7 @@
 
 .from-me {
   position: relative;
-  padding: 1px 20px;
+  padding: 5px 20px;
   // color: white;
   color: black;
   background: yellow;
@@ -41,7 +41,7 @@
 .from-them {
   float: left;
   position: relative;
-  padding: 2px 20px;
+  padding: 10px 20px;
   background: #e5e5ea;
   border-radius: 25px;
   max-width: 300px;
@@ -63,4 +63,16 @@
   clear: both;
   width: 335px;
   height: 200px;
+}
+
+.category {
+  margin-left: 15px;
+  padding-top: 20px;
+  float: left;
+  position: relative;
+  padding: 2px 15px;
+  background: #e5e5ea;
+  border-radius: 20px;
+  max-width: 300px;
+  margin-bottom: 20px;
 }

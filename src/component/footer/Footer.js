@@ -1,7 +1,6 @@
 import React, {useState, useContext} from 'react';
 import {Input} from 'antd'
 import MsgContext from '../../context/MessageContext'
-import './Footer.scss'
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import InputGroup from 'react-bootstrap/InputGroup'
@@ -18,26 +17,12 @@ const Footer = () => {
     }
     return (
         <div >
-        {/**<Search
-        size = "small"
-        onSearch={value.actions.onSearch} 
-        value = {value.state.inputVal} 
-        onChange = {value.actions.onChaneVal} 
-        enterButton="전송" 
-        style={{ width: 330}} />**/}
-
-        
-        {/**<input 
-        value = {value.state.inputVal} 
-        onChange = {value.actions.onChaneVal} 
-        ></input>
-        <button onClick = {search}></button>**/}
         <InputGroup size="sm" className="mb-3">
         <Button variant="outline-secondary" id="button-addon1" onClick = {search}>
         <SendOutlined  style ={{marginBottom:"5px"}}/>
         </Button>
         <FormControl
-          style = {{width : "270px"}}
+          style = {{width : "270px" }}
           aria-label="Example text with button addon"
           aria-describedby="basic-addon1"
           value = {value.state.inputVal}

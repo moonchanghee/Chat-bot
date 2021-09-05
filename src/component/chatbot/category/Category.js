@@ -1,23 +1,23 @@
 import React,{useContext} from 'react';
-import { Button, Avatar } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 import MessageContext from '../../../context/MessageContext'
+import './Category.scss'
 const Category = () => {
     const value = useContext(MessageContext)
+    
     return (
         <>
         <div className="clear"></div>
-        안녕하세요 챗봇입니다
           <div style ={{width : "230px"}}>
-        <Button block onClick = {value.actions.guide}>카테고리 안내</Button>
+        <Button  className="CategoryBtn" id = "CategoryBtn1" block onClick = {value.actions.guide}>카테고리 안내</Button>
         <div className="clear"></div>
-        <Button block onClick = {value.actions.goodsSearch}>상품조회</Button>
+        <Button className="CategoryBtn" block onClick = {value.actions.goodsSearch}>상품조회</Button>
         <div className="clear"></div>
-        <Button block onClick = {value.actions.goodsReser}>상품예약</Button>
+        <Button className="CategoryBtn" block onClick = {value.actions.goodsReser}>상품예약</Button>
         <div className="clear"></div>
-        <Button block onClick = {value.actions.reserSearch}> 예약조회</Button>
+        <Button className="CategoryBtn" block onClick = {value.actions.reserSearch}> 예약조회</Button>
         <div className="clear"></div>
-        <Button style = {{marginBottom : "20px"}}
+        <Button className="CategoryBtn" style = {{marginBottom : "20px"}}
         onClick = {value.actions.cancel} block>예약취소</Button>
         <div className="clear"></div>
         </div>

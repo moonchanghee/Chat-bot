@@ -12,12 +12,12 @@ const MsgProvider = ({children }) => {
     const [inputVal, setInputVal] = useState("")
     const [submitVal, setSubmitVal] = useState("")
     const [msgList, setMsgList] = useState([{
-        user:0,msg : <Category></Category>
+        user : 0, msg : "안녕하세요 챗봇입니다. 원하시는 서비스를 선택, 입력해주세요",type : 0 ,type2 : 1
     }])
 
     const onSearch = ()=>{
         setInputVal("")
-        setMsgList(()=>[...msgList, {user:1, msg: inputVal, type : 0}] )
+        setMsgList(()=>[...msgList, {user:1, msg: inputVal, type : 0 ,type2 : 0  }] )
         console.log(msgList)
         const body = {
             data : 1
@@ -26,7 +26,7 @@ const MsgProvider = ({children }) => {
     };
 
     const chatbotMsg = (value) => {
-        setMsgList(()=>[...msgList, {user:0, msg: value ,type : 0}] )
+        setMsgList(()=>[...msgList, {user:0, msg: value ,type : 0 ,type2 : 0}] )
     }
 
     const onChaneVal = (e) => {
@@ -34,22 +34,22 @@ const MsgProvider = ({children }) => {
     }
     const guide = () => {
         console.log("안내")
-        setMsgList( () => [...msgList ,{user : 0, msg : <Category></Category>,type : 0}])
+        setMsgList( () => [...msgList ,{user : 0, msg : "안녕하세요 챗봇입니다. 원하시는 서비스를 선택, 입력해주세요",type : 0 ,type2 : 1}])
     }
 
 
     const goodsSearch = () => {
         console.log("상품조회")
         // setMsgList(() => [...msgList ,{user : 0, msg : <Card></Card>}])
-        setMsgList(() => [...msgList ,{user : 0, msg : <GoodsSearch></GoodsSearch>,type : 0}])
+        setMsgList(() => [...msgList ,{user : 0, msg : <GoodsSearch></GoodsSearch>,type : 0, type2 : 0}])
     }
     const goodsReser = () => {
         console.log("상품예약")
-        setMsgList( () => [...msgList ,{user : 0, msg : "상품예약" ,type : 1}])
+        setMsgList( () => [...msgList ,{user : 0, msg : "상품예약" ,type : 1,type2 : 0 }])
     }
     const reserSearch = () => {
         console.log("예약조회")
-        setMsgList( () => [...msgList ,{user : 0, msg : "예약조회",type : 0}])
+        setMsgList( () => [...msgList ,{user : 0, msg : "예약조회",type : 0,type2 : 0}])
     }
     const cancel = () => {
         console.log("취소")
