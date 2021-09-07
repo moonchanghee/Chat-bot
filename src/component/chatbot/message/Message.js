@@ -15,10 +15,6 @@ const Message = () => {
     // const AvatarSrc = props.who ==='bot' ? <Icon type="robot" /> : <Icon type="smile" />  
     useEffect(() => {
       scrollToBottom()
-      if(i === 1){
-        console.log("dddded")
-      //  value.actions.setCardShow(true)
-      }
     }, [value.state.msgList])
 
 

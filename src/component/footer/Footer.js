@@ -12,7 +12,6 @@ const Footer = () => {
     const value = useContext(MsgContext)
 
     const search = (e) => {
-        console.log(e.target.value)
         value.actions.onSearch() 
     }
     return (
