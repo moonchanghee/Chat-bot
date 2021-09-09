@@ -8,6 +8,9 @@ import GoodsSearch from '../component/chatbot/goodsSearch/GoodsDate';
 
 const MsgContext = React.createContext()
 const MsgProvider = ({children }) => {
+
+
+
     const [cardShow, setCardShow] = useState()
     const [inputVal, setInputVal] = useState("")
     const [submitVal, setSubmitVal] = useState("")
@@ -17,35 +20,24 @@ const MsgProvider = ({children }) => {
     const [msgList, setMsgList] = useState([{
         user : 0, msg : "안녕하세요 챗봇입니다. 원하시는 서비스를 선택, 입력해주세요",type : 0 ,type2 : 1
     }])
-let ch = ""
-//     useEffect(() => {
-//     console.log("msgData",msgData,cardtype)
-// //     if(cardtype === "card"){
-// //         setMsgList(() => [...msgList ,{user : 0, msg : "ㅇㅇㅇ",type : 1, type2 : 0}])
-// //     }else if(cardtype === "text") {
-// //         console.log("no card")
-// //         setMsgList(() => [...msgList ,{user : 0, msg : msgData.resultText, type : 0, type2 : 0}])
-// // }
-//     },[msgData && cardtype])
 
 
-useEffect(() => {
-    console.log("textMsg",textMsg.length)
-    if(textMsg.length > 0 && cardtype === "text") {
-        console.log("text")
-        setMsgList(() => [...msgList ,{user : 0, msg : textMsg, type : 0, type2 : 0}])
-    }
-},[textMsg || cardtype])
 
-
-useEffect(() => {
-    console.log("msgData",msgData)
-        if(cardtype === "card"){
-        setMsgList(() => [...msgList ,{user : 0, msg : "ㅇㅇㅇ",type : 1, type2 : 0}])
-    }
-},[ msgData || cardtype])
-
-
+    useEffect(() => {
+        if(textMsg.length > 0 && cardtype === "text") {
+            console.log("text")
+            setMsgList(() => [...msgList ,{user : 0, msg : textMsg, type : 0, type2 : 0}])
+        }
+    },[textMsg || cardtype])
+    
+    
+    useEffect(() => {
+            if(cardtype === "card"){
+            setMsgList(() => [...msgList ,{user : 0, msg : "ㅇㅇㅇ",type : 1, type2 : 0}])
+        }
+    },[ msgData || cardtype])
+    
+    
 
     const onSearch = ()=>{
         setInputVal("")
@@ -54,38 +46,38 @@ useEffect(() => {
         const textQueryVariables = {
             text : inputVal
         }
-        Axios.post("https://b7ce-203-241-183-10.ngrok.io/api/dialogflow/textQuery", textQueryVariables).then(e => {
+        Axios.post("http://35.216.1.241:3000/api/dialogflow/textQuery", textQueryVariables).then(e => {
             console.log(e)
             setCardType(e.data.type)
+            setTextMsg(e.data.data.resultText)
             if(e.data.type === "card"){
                 setMsgData(e.data.data.resultData)
-            }else if(e.data.type === "text"){
-                // setMsgData(e.data.data)
-                setTextMsg(e.data.data.resultText)
+                // setTextMsg(e.data.data.resultText)
             }
+            // else if(e.data.type === "text"){
+            //     // setMsgData(e.data.data)
+            //     setTextMsg(e.data.data.resultText)
+            // }
         }).catch((e) => {
             console.log(e)
         })
     };
-    // const chatbotMsg = (value) => {
-    //     setMsgList(()=>[...msgList, {user:0, msg: value ,type : 0 ,type2 : 0}] )
-    // }
-
     const onChaneVal = (e) => {
         setInputVal(e.currentTarget.value)
     }
     const guide = () => {
-        console.log("안내")
-        setMsgList( () => [...msgList ,{user : 0, msg : "안녕하세요 챗봇입니다. 원하시는 서비스를 선택, 입력해주세요",type : 0 ,type2 : 1}])
+        console.log("공지사항 안내")
+        setMsgList( () => [...msgList ,{user : 0, msg : "공지사항 안내입니다.",type : 0 ,type2 : 0, notice : 1}])
     }
 
     const goodsSearch = () => {
         console.log("상품조회")
-        setMsgList(() => [...msgList ,{user : 0, msg : <GoodsSearch></GoodsSearch>,type : 0, type2 : 0}])
+        // setMsgList(() => [...msgList ,{user : 0, msg : <GoodsSearch></GoodsSearch>,type : 0, type2 : 0}])
+        setMsgList(() => [...msgList ,{user : 0, msg : "상품명을 입력해 주세요",type : 0, type2 : 0}])
     }
     const goodsReser = () => {
         console.log("상품예약")
-        setMsgList( () => [...msgList ,{user : 0, msg : "상품예약" ,type : 1,type2 : 0 }])
+        setMsgList( () => [...msgList ,{user : 0, msg : "상품예약" ,type : 0,type2 : 0 }])
     }
     const reserSearch = () => {
         console.log("예약조회")
@@ -93,7 +85,7 @@ useEffect(() => {
     }
     const cancel = () => {
         console.log("취소")
-        setMsgList( () => [...msgList ,{user : 0, msg : "취소"}])
+        setMsgList( () => [...msgList ,{user : 0, msg : "예약 취소하시겠습니까?"}])
     }
 
 

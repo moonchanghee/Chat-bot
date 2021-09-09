@@ -5,6 +5,7 @@ import "./Message.scss"
 import { UserOutlined } from '@ant-design/icons';
 import Cards from '../card/Card'
 import Category from '../category/Category';
+import Notice from '../notice/Notice'
 import { BackTop } from 'antd';
 
 const Message = () => {
@@ -15,8 +16,6 @@ const Message = () => {
     useEffect(() => {
       scrollToBottom()
     }, [value.state.msgList])
-
-
 
 
     // 상품 조회 카드
@@ -57,11 +56,16 @@ const Message = () => {
    </div>
    :
    ""
-
   }
   {e.type2 ? 
     <div className = "category">
     <Category/> 
+    </div>:
+    ""
+  }
+  {e.notice ? 
+    <div className = "notice " >
+    <Notice/> 
     </div>:
     ""
   }

@@ -63,20 +63,6 @@ max-height:100%;
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />
     };
-
-    // const items = [
-    //   { id: 1, url: "/img/img.jpg" , msg : "첫번째 상품"},
-    //   { id: 2, url: "/img/img.jpg" , msg : "두번째 상품"},
-    //   { id: 3, url: "/img/img.jpg" , msg : "세번째 상품"},
-    //   { id: 4, url: "/img/img.jpg" , msg : "네번째 상품"},
-    //   { id: 5, url: "/img/img.jpg" , msg : "다섯번째 상품"},
-    //   { id: 6, url: "/img/img.jpg" , msg : "여섯번째 상품"},
-    //   { id: 7, url: "/img/img.jpg" , msg : "일곱번째 상품"},
-    //   { id: 8, url: "/img/img.jpg" , msg : "여덟번째 상품"},
-    //   { id: 9, url: "/img/img.jpg" , msg : "아홉번째 상품"},
-    //   { id: 10, url: "/img/img.jpg" , msg : "열번째 상품"},
-    // ];
-    
     const itemBtn = (e) => {
     
       const msg = e.target.getAttribute('data');

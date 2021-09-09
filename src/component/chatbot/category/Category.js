@@ -9,7 +9,7 @@ const Category = () => {
         <>
         <div className="clear"></div>
           <div style ={{width : "230px"}}>
-        <Button  className="CategoryBtn" id = "CategoryBtn1" block onClick = {value.actions.guide}>카테고리 안내</Button>
+        <Button  className="CategoryBtn" id = "CategoryBtn1" block onClick = {value.actions.guide}>공지사항 안내</Button>
         <div className="clear"></div>
         <Button className="CategoryBtn" block onClick = {value.actions.goodsSearch}>상품조회</Button>
         <div className="clear"></div>
