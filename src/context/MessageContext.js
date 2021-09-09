@@ -11,19 +11,41 @@ const MsgProvider = ({children }) => {
     const [cardShow, setCardShow] = useState()
     const [inputVal, setInputVal] = useState("")
     const [submitVal, setSubmitVal] = useState("")
-    const [msgs, setMsgs] = useState() 
-    const [msgData, setMsgData] = useState([{1:1}])
+    const [cardtype, setCardType] = useState("")
+    const [msgData, setMsgData] = useState([{}])
+    const [textMsg, setTextMsg] = useState("")
     const [msgList, setMsgList] = useState([{
         user : 0, msg : "안녕하세요 챗봇입니다. 원하시는 서비스를 선택, 입력해주세요",type : 0 ,type2 : 1
     }])
+let ch = ""
+//     useEffect(() => {
+//     console.log("msgData",msgData,cardtype)
+// //     if(cardtype === "card"){
+// //         setMsgList(() => [...msgList ,{user : 0, msg : "ㅇㅇㅇ",type : 1, type2 : 0}])
+// //     }else if(cardtype === "text") {
+// //         console.log("no card")
+// //         setMsgList(() => [...msgList ,{user : 0, msg : msgData.resultText, type : 0, type2 : 0}])
+// // }
+//     },[msgData && cardtype])
 
-    useEffect(() => {
-        console.log("if out")
-        if(msgData.length > 1){
-            setMsgList(() => [...msgList ,{user : 0, msg : "ㅇㅇㅇ",type : 1, type2 : 0}])
-            console.log("if in")
-        }
-    },[msgData])
+
+useEffect(() => {
+    console.log("textMsg",textMsg.length)
+    if(textMsg.length > 0 && cardtype === "text") {
+        console.log("text")
+        setMsgList(() => [...msgList ,{user : 0, msg : textMsg, type : 0, type2 : 0}])
+    }
+},[textMsg || cardtype])
+
+
+useEffect(() => {
+    console.log("msgData",msgData)
+        if(cardtype === "card"){
+        setMsgList(() => [...msgList ,{user : 0, msg : "ㅇㅇㅇ",type : 1, type2 : 0}])
+    }
+},[ msgData || cardtype])
+
+
 
     const onSearch = ()=>{
         setInputVal("")
@@ -32,16 +54,22 @@ const MsgProvider = ({children }) => {
         const textQueryVariables = {
             text : inputVal
         }
-        // Axios.post("https://89a0-203-241-183-10.ngrok.io/api/dialogflow/textQuery", textQueryVariables).then(e => {console.log(e.data.fulfillmentMessages[0].text.text)})
-        // Axios.post("https://89a0-203-241-183-10.ngrok.io/api/dialogflow/textQuery", textQueryVariables).then(e => {console.log(e.data.fulfillmentMessages[0].text.text[0])})
-        // Axios.post("https://44e3-203-241-183-10.ngrok.io/api/dialogflow/textQuery", textQueryVariables).then(e => {console.log(e.data.data.resultData)})
-        Axios.post("https://44e3-203-241-183-10.ngrok.io/api/dialogflow/textQuery", textQueryVariables).then(e => {
-            setMsgData(e.data.data.resultData)
+        Axios.post("https://b7ce-203-241-183-10.ngrok.io/api/dialogflow/textQuery", textQueryVariables).then(e => {
+            console.log(e)
+            setCardType(e.data.type)
+            if(e.data.type === "card"){
+                setMsgData(e.data.data.resultData)
+            }else if(e.data.type === "text"){
+                // setMsgData(e.data.data)
+                setTextMsg(e.data.data.resultText)
+            }
+        }).catch((e) => {
+            console.log(e)
         })
     };
-    const chatbotMsg = (value) => {
-        setMsgList(()=>[...msgList, {user:0, msg: value ,type : 0 ,type2 : 0}] )
-    }
+    // const chatbotMsg = (value) => {
+    //     setMsgList(()=>[...msgList, {user:0, msg: value ,type : 0 ,type2 : 0}] )
+    // }
 
     const onChaneVal = (e) => {
         setInputVal(e.currentTarget.value)
@@ -51,10 +79,8 @@ const MsgProvider = ({children }) => {
         setMsgList( () => [...msgList ,{user : 0, msg : "안녕하세요 챗봇입니다. 원하시는 서비스를 선택, 입력해주세요",type : 0 ,type2 : 1}])
     }
 
-
     const goodsSearch = () => {
         console.log("상품조회")
-        // setMsgList(() => [...msgList ,{user : 0, msg : <Card></Card>}])
         setMsgList(() => [...msgList ,{user : 0, msg : <GoodsSearch></GoodsSearch>,type : 0, type2 : 0}])
     }
     const goodsReser = () => {
@@ -76,7 +102,7 @@ const MsgProvider = ({children }) => {
                 state: {inputVal,submitVal,msgList,cardShow,msgData},
                 actions : {
                     onChaneVal : onChaneVal, onSearch:onSearch,setInputVal:setInputVal, setSubmitVal:setSubmitVal,
-                   setMsgList:setMsgList,setCardShow:setCardShow, guide : guide, chatbotMsg:chatbotMsg,goodsSearch:goodsSearch,goodsReser : goodsReser,reserSearch : reserSearch,cancel:cancel}
+                   setMsgList:setMsgList,setCardShow:setCardShow, guide : guide,goodsSearch:goodsSearch,goodsReser : goodsReser,reserSearch : reserSearch,cancel:cancel}
             }
     return (
         <MsgContext.Provider value = {value}>

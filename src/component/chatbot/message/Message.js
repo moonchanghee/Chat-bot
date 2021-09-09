@@ -11,11 +11,12 @@ const Message = () => {
 
   const value = useContext(MsgContext)
   const boxs = useRef()
-  let i = 1
     // const AvatarSrc = props.who ==='bot' ? <Icon type="robot" /> : <Icon type="smile" />  
     useEffect(() => {
       scrollToBottom()
     }, [value.state.msgList])
+
+
 
 
     // 상품 조회 카드
