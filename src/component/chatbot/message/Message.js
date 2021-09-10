@@ -6,17 +6,16 @@ import { UserOutlined } from '@ant-design/icons';
 import Cards from '../card/Card'
 import Category from '../category/Category';
 import Notice from '../notice/Notice'
-import { BackTop } from 'antd';
+import CheckButton from '../checkButton/CheckButton.js';
 
 const Message = () => {
 
   const value = useContext(MsgContext)
   const boxs = useRef()
-    // const AvatarSrc = props.who ==='bot' ? <Icon type="robot" /> : <Icon type="smile" />  
     useEffect(() => {
       scrollToBottom()
     }, [value.state.msgList])
-
+  
 
     // 상품 조회 카드
     const scrollToBottom = () => {
@@ -69,6 +68,13 @@ const Message = () => {
     </div>:
     ""
   }
+  {e.check ? 
+    <div className = "notice " >
+    <CheckButton/>
+    </div>:
+    ""
+  }
+ 
   </div>
   )}
   </div>
