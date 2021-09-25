@@ -71,8 +71,7 @@ max-height:100%;
     
     return (
       <Container>
-        <StyledSlider {...settings}
-        >
+        <StyledSlider {...settings}>
         {value.state.msgData.map((item) => {
             return (
               <div className = "cardHead" key={item.company_id}>  
