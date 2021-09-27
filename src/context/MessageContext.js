@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Category from '../component/chatbot/category/Category';
-import Card from '../component/chatbot/card/Card'
 import Axios from 'axios'
-import GoodsSearch from '../component/chatbot/goodsSearch/GoodsDate';
 
 //1 사람 0 챗봇  type 1 : 카드 오픈
 
 const MsgContext = React.createContext()
 const MsgProvider = ({children }) => {
-
-
 
     const [cardShow, setCardShow] = useState()
     const [inputVal, setInputVal] = useState("")
@@ -17,45 +12,26 @@ const MsgProvider = ({children }) => {
     const [cardtype, setCardType] = useState("")
     const [msgData, setMsgData] = useState([{}])
     const [textMsg, setTextMsg] = useState("")
-    // const [categoryList, setCategoryList] = useState([{}])
-    // const [fstBotMsg, setFstBotMsg] = useState()
+    const [msgCount, setMsgCount] = useState(0)
     const [msgList, setMsgList] = useState([{
         user : 0, msg : "안녕하세요. 주문 도움 챗봇 입니다. 무엇을 도와드릴까요?",type : 0 ,type2 : 1
     }])
 
-    // useEffect(() => {
-
-
-    //     Axios.post("http://35.216.1.241:3000/api/dialogflow/eventQuery",{ event: "Welcome"}).then(e => {
-    //         // console.log(e.data.data.resultMessage.listValue.values)
-    //         setFstBotMsg(e.data.data.resultText.stringValue)
-    //     setCategoryList(e.data.data.resultMessage.listValue.values)
-    // })
-    // },[])
-    
-    
-
-
-    useEffect(() => {
-        if(textMsg.length > 0 && cardtype === "text") {
-            console.log("text")
-            setMsgList(() => [...msgList ,{user : 0, msg : textMsg, type : 0, type2 : 0}])
-        }
-    },[textMsg || cardtype])
-    
     
     useEffect(() => {
-        console.log("textMsg",textMsg)
+        console.log("msgCount",msgCount)
             if(cardtype === "card"){
             setMsgList(() => [...msgList ,{user : 0, msg : textMsg,type : 1, type2 : 0}])
         }
-    },[ msgData || cardtype])
-    
-    
+                if(textMsg.length > 0 && cardtype === "text") {
+            setMsgList(() => [...msgList ,{user : 0, msg : textMsg, type : 0, type2 : 0}])
+        }
+    },[msgData , cardtype,msgCount])
+
+
 
     const onSearch = ()=>{
         setInputVal("")
-        console.log("클릭")
         setMsgList(()=>[...msgList, {user:1, msg: inputVal, type : 0 ,type2 : 0  }] )
         const textQueryVariables = {
             text : inputVal
@@ -63,17 +39,20 @@ const MsgProvider = ({children }) => {
         }
         
         Axios.post("http://35.216.1.241:3000/api/dialogflow/textQuery", textQueryVariables).then(e => {
+            console.log("testtesttesttest",e.data.type , e.data.data.resultText)
             console.log(e)
             setCardType(e.data.type)
             setTextMsg(e.data.data.resultText)
+            setMsgCount(msgList.length)
+            //요청이 성공하면 받은 데이터를 useState를 사용하여 변경 후 useEffect로 해당 usestate값이 
+            //변경되면 업데이트 함 하지만 같은 데이터가 들어올 경우 데이터 변경이 없어 새로운 값을 받았지만
+            //useEffect 실행이 되지않음 즉 새로운 채팅메시지를 받았지만 데이터 내용이 같아 렌더링이 되지않았다.
+            //따라서 msgcount라는 usestate를 추가하여 메시지가 추가되면 length값을 저장한다.
+            //useEffect 의존배열에서 문자 내용을 지우고 msgcount (일종의 메시지 키값) 내용에 따른 업데이트가 아닌
+            //값이 추가되면 업데이트가 되게끔 변경함   
             if(e.data.type === "card"){
                 setMsgData(e.data.data.resultData)
-                // setTextMsg(e.data.data.resultText)
             }
-            // else if(e.data.type === "text"){
-            //     // setMsgData(e.data.data)
-            //     setTextMsg(e.data.data.resultText)
-            // }
         }).catch((e) => {
             console.log(e)
         })
@@ -121,7 +100,7 @@ const MsgProvider = ({children }) => {
 
     
     const value = {
-                state: {inputVal,submitVal,msgList,cardShow,msgData},
+                state: {inputVal,submitVal,msgList,cardShow,msgData,cardtype},
                 actions : {
                     yes:yes,no:no,onChaneVal : onChaneVal,chatbotUse:chatbotUse, goodsAskList:goodsAskList,onSearch:onSearch,setInputVal:setInputVal, setSubmitVal:setSubmitVal,
                    setMsgList:setMsgList,setCardShow:setCardShow, guide : guide,goodsReser : goodsReser,reserSearch : reserSearch,cancel:cancel}

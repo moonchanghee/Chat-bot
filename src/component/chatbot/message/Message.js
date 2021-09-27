@@ -27,9 +27,9 @@ const Message = () => {
       <>
     <div className = "testClass" ref = {boxs} >
     
-  {value.state.msgList.map(e => 
+  {value.state.msgList.map((e,index) => 
   e.user ? 
-  <div style ={{marginRight : "20px"}}>
+  <div style ={{marginRight : "20px"}} key = {index}>
   <div className="clear"></div>
   <div className="from-me" style ={{marginBottom : "5px"}}>
   <p>{e.msg}</p>
@@ -38,7 +38,7 @@ const Message = () => {
   <div className="clear"></div>
   </div>
    : 
-  <div style ={{marginLeft : "20px" , verticalAlign : "middle"}}>
+  <div style ={{marginLeft : "20px" , verticalAlign : "middle"}} key = {index}>
   <div className="clear"></div>
   <div style ={{float : "left"}}>
   <Avatar icon={<UserOutlined />} style ={{marginRight : "5px" , marginBottom : "10px"}}/>
