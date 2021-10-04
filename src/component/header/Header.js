@@ -5,9 +5,9 @@ const Header = () => {
     return (
         <div>
         <Row justify="space-between">
-        <Col span={3}><CloseCircleOutlined /></Col>
+        <Col span={3}></Col>
         <Col span={4}>챗봇</Col>
-        <Col span={1}><SearchOutlined /></Col>
+        <Col span={1}></Col>
       </Row>
         </div>
     );
