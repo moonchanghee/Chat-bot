@@ -19,14 +19,15 @@ const MsgProvider = ({children }) => {
 
     
     useEffect(() => {
-        console.log("msgCount",msgCount)
+        // console.log("msgCount",msgCount)
             if(cardtype === "card"){
             setMsgList(() => [...msgList ,{user : 0, msg : textMsg,type : 1, type2 : 0}])
         }
                 if(textMsg.length > 0 && cardtype === "text") {
             setMsgList(() => [...msgList ,{user : 0, msg : textMsg, type : 0, type2 : 0}])
         }
-    },[msgData , cardtype,msgCount])
+    // },[msgData,cardtype,msgCount])
+},[msgData,cardtype,textMsg])
 
 
 
@@ -38,18 +39,12 @@ const MsgProvider = ({children }) => {
             // text : "오늘 예약 가능한 호텔 알려줘."
         }
         
-        Axios.post("http://35.216.1.241:3000/api/dialogflow/textQuery", textQueryVariables).then(e => {
-            console.log("testtesttesttest",e.data.type , e.data.data.resultText)
+        Axios.post("https://35.216.1.241:3000/api/dialogflow/textQuery", textQueryVariables).then(e => {
+            // console.log("test",e.data.type , e.data.data.resultText)
             console.log(e)
             setCardType(e.data.type)
             setTextMsg(e.data.data.resultText)
-            setMsgCount(msgList.length)
-            //요청이 성공하면 받은 데이터를 useState를 사용하여 변경 후 useEffect로 해당 usestate값이 
-            //변경되면 업데이트 함 하지만 같은 데이터가 들어올 경우 데이터 변경이 없어 새로운 값을 받았지만
-            //useEffect 실행이 되지않음 즉 새로운 채팅메시지를 받았지만 데이터 내용이 같아 렌더링이 되지않았다.
-            //따라서 msgcount라는 usestate를 추가하여 메시지가 추가되면 length값을 저장한다.
-            //useEffect 의존배열에서 문자 내용을 지우고 msgcount (일종의 메시지 키값) 내용에 따른 업데이트가 아닌
-            //값이 추가되면 업데이트가 되게끔 변경함   
+            // setMsgCount(msgList.length)
             if(e.data.type === "card"){
                 setMsgData(e.data.data.resultData)
             }
