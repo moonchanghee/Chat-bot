@@ -51,7 +51,7 @@ const Message = () => {
   </div>
   { e.type ? 
     <div className="cards" >
-    <Cards/>
+    <Cards props = {e.data} />
    </div>
    :
    ""

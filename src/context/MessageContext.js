@@ -13,25 +13,26 @@ const MsgProvider = ({children }) => {
     const [msgData, setMsgData] = useState([{}])
     const [textMsg, setTextMsg] = useState("")
     // const [textMsg, setTextMsg] = useState([{}])
-    const [msgCount, setMsgCount] = useState(0)
+    const [msgCount, setMsgCount] = useState("")
     const [msgList, setMsgList] = useState([{
         user : 0, msg : "안녕하세요. 주문 도움 챗봇 입니다. 무엇을 도와드릴까요?",type : 0 ,type2 : 1
     }])
 
     useEffect(() => {
+        console.log("msgCount",msgCount)
         if(textMsg.length > 0 && cardtype === "text") {
             console.log("text")
             setMsgList(() => [...msgList ,{user : 0, msg : textMsg, type : 0, type2 : 0}])
         }
-    },[textMsg || cardtype || msgCount])
+    },[textMsg && cardtype && msgCount])
     
     
     useEffect(() => {
-        console.log("textMsg",textMsg)
+        // console.log("msgData",msgData)
             if(cardtype === "card"){
-            setMsgList(() => [...msgList ,{user : 0, msg : textMsg,type : 1, type2 : 0}])
+            setMsgList(() => [...msgList ,{user : 0, msg : textMsg,type : 1, type2 : 0,data : msgData}])
         }
-    },[ msgData || cardtype || msgCount])
+    },[ msgData || cardtype || msgCount ])
 
 
     const onSearch = ()=>{
@@ -45,7 +46,7 @@ const MsgProvider = ({children }) => {
             console.log(e)
             setCardType(e.data.type)
             setTextMsg(e.data.data.resultText)
-            setMsgCount(e.data.data.id)
+            setMsgCount(e.data.id)
             if(e.data.type === "card"){
                 if(e.data.data.data.length === 0){
                     console.log("데이터 없음")
@@ -114,6 +115,3 @@ const MsgProvider = ({children }) => {
 }
 export {MsgProvider}
 export default MsgContext
-
-
-        

@@ -4,7 +4,6 @@ import {Button} from "antd"
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import MsgContext from "../../../context/MessageContext";
 import './Card.scss'
 
 
@@ -27,9 +26,7 @@ max-width:100%;
 height: 170px;
 `;
 
-  const Card = () => {
-
-    const value = useContext(MsgContext)
+  const Card = (data) => {
 
     const SampleNextArrow = (props) => {
       const { className,onClick } = props;
@@ -73,7 +70,7 @@ height: 170px;
     return (
       <Container>
         <StyledSlider {...settings}>
-        {value.state.msgData.map((item) => {
+        {data.props.map((item) => {
             return (
               <div className = "cardHead" key={item.company_id}>  
               <ImageContainer>
