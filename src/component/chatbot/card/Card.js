@@ -1,5 +1,6 @@
 import React, {useContext, useEffect} from "react";
 import styled from 'styled-components';
+import {Button} from "antd"
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -23,7 +24,7 @@ margin: 0 5px;
 
 const Image = styled.img`
 max-width:100%;
-max-height:100%;
+height: 170px;
 `;
 
   const Card = () => {
@@ -35,7 +36,7 @@ max-height:100%;
       return (
         <div
           className={className}
-          style={{ display: "block", background: "grey" }}
+          style={{ display: "block", background: "grey"}}
           onClick={onClick}
         />
       );
@@ -46,7 +47,7 @@ max-height:100%;
       return (
         <div
           className={className}
-          style={{ display: "block", background: "green" }}
+          style={{ display: "block", background: "grey", marginLeft : "4px" }}
           onClick={onClick}
         />
       );
@@ -76,14 +77,15 @@ max-height:100%;
             return (
               <div className = "cardHead" key={item.company_id}>  
               <ImageContainer>
-                  <Image src="/img/img.jpg" />
+              <Image src={item.product_img[0].img_url} />
                   <div className = "cardContent">
-                  {item.goods_nm}
+                  상품명 : {item.product_name}
                   <br/>
-                  <button className = "itemButton"   data={item.company_id} onClick = {(e, item) => {itemBtn(e, item)}}>자세히보기</button>
+                  설명: {item.product_description}
+                  <br/>
+                  <Button className = "itemButton"   data={item.company_id} onClick = {(e, item) => {itemBtn(e, item)}}>자세히보기</Button>
                   </div>
                   </ImageContainer>
-
               </div>
             );
           })}

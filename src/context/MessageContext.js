@@ -12,23 +12,26 @@ const MsgProvider = ({children }) => {
     const [cardtype, setCardType] = useState("")
     const [msgData, setMsgData] = useState([{}])
     const [textMsg, setTextMsg] = useState("")
+    // const [textMsg, setTextMsg] = useState([{}])
     const [msgCount, setMsgCount] = useState(0)
     const [msgList, setMsgList] = useState([{
         user : 0, msg : "안녕하세요. 주문 도움 챗봇 입니다. 무엇을 도와드릴까요?",type : 0 ,type2 : 1
     }])
 
+    useEffect(() => {
+        if(textMsg.length > 0 && cardtype === "text") {
+            console.log("text")
+            setMsgList(() => [...msgList ,{user : 0, msg : textMsg, type : 0, type2 : 0}])
+        }
+    },[textMsg || cardtype || msgCount])
+    
     
     useEffect(() => {
-        // console.log("msgCount",msgCount)
+        console.log("textMsg",textMsg)
             if(cardtype === "card"){
             setMsgList(() => [...msgList ,{user : 0, msg : textMsg,type : 1, type2 : 0}])
         }
-                if(textMsg.length > 0 && cardtype === "text") {
-            setMsgList(() => [...msgList ,{user : 0, msg : textMsg, type : 0, type2 : 0}])
-        }
-    // },[msgData,cardtype,msgCount])
-},[msgData,cardtype,textMsg])
-
+    },[ msgData || cardtype || msgCount])
 
 
     const onSearch = ()=>{
@@ -36,17 +39,20 @@ const MsgProvider = ({children }) => {
         setMsgList(()=>[...msgList, {user:1, msg: inputVal, type : 0 ,type2 : 0  }] )
         const textQueryVariables = {
             text : inputVal
-            // text : "오늘 예약 가능한 호텔 알려줘."
         }
         
-        Axios.post("https://35.216.1.241:3000/api/dialogflow/textQuery", textQueryVariables).then(e => {
-            // console.log("test",e.data.type , e.data.data.resultText)
+        Axios.post("http://35.216.1.241:3000/api/dialogflow/textQuery", textQueryVariables).then(e => {
             console.log(e)
             setCardType(e.data.type)
             setTextMsg(e.data.data.resultText)
-            // setMsgCount(msgList.length)
+            setMsgCount(e.data.data.id)
             if(e.data.type === "card"){
-                setMsgData(e.data.data.resultData)
+                if(e.data.data.data.length === 0){
+                    console.log("데이터 없음")
+                    setTextMsg("데이터가 없습니다")
+                }else{
+                    setMsgData(e.data.data.data)
+                }
             }
         }).catch((e) => {
             console.log(e)

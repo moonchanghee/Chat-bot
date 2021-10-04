@@ -1,6 +1,7 @@
 .cardContent {
-  height: 70px;
-  background-color: yellow;
+  // height: 70px;
+  max-height: 70px;
+  background-color: #f5f6ce;
   text-align: center;
 }
 
@@ -19,5 +20,5 @@
 // }
 
 .cards {
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
