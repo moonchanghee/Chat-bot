@@ -1,1 +1,1 @@
-chat bot
+chat-frontend
