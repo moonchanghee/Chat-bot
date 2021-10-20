@@ -1,13 +1,22 @@
-import React, {useState, useContext} from 'react';
-import {MdAdd} from 'react-icons/md'
+import React, {useContext, useEffect } from 'react';
 import {Button, Popover,Tooltip} from 'antd'
 import content from '../content/Content'
 import "./Button.scss"
 // import {ChangeConsumer} from '../../context/ChangeContext'
 import ChangeContext from '../../context/ChangeContext'
-
+import Axios from 'axios'
+import MsgContext from '../../context/MessageContext';
 const ButtonComponent = () => {
 const value = useContext(ChangeContext)
+const data = useContext(MsgContext)
+
+// useEffect(() => {
+//     Axios.post("http://35.216.1.241:3000/api/dialogflow/eventQuery", {event : "Welcome"}).then((e) => {
+//         console.log(e.data.resultData.listValue.values)
+//         data.actions.setCategoryD(e.data.resultData.listValue.values)
+//     })
+// },[])
+
 
     return (
         <>

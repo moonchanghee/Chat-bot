@@ -5,12 +5,12 @@ import { Collapse } from 'antd';
 const { Panel } = Collapse;
 
 
-const Notice = () => {
+const Notice = ({props}) => {
 
     const onChange = (key) =>{
         console.log(key);
       }
-
+console.log(props)
 
 const item = 
 [
@@ -26,10 +26,10 @@ const item =
         <>
         <div className = "noticeInner">
         <Collapse defaultActiveKey={['']} onChange = {onChange}>
-        {item.map((e) => {
+        {props.map((e) => {
             return(
-            <Panel className ="panel" header={e.title} key={e.id} >
-            <p>{e.msg}</p>
+            <Panel className ="panel" header={e.structValue.fields.title.stringValue} key={e.id} >
+            {/**<p>{e.msg}</p>**/}
           </Panel>
           
           )

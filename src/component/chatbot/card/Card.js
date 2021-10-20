@@ -62,30 +62,45 @@ height: 170px;
       prevArrow: <SamplePrevArrow />
     };
     const itemBtn = (e) => {
-    
       const msg = e.target.getAttribute('data');
-      console.log(msg )
     }
     
     return (
       <Container>
         <StyledSlider {...settings}>
-        {data.props.map((item) => {
-            return (
-              <div className = "cardHead" key={item.company_id}>  
-              <ImageContainer>
-              <Image src={item.product_img[0].img_url} />
-                  <div className = "cardContent">
-                  상품명 : {item.product_name}
-                  <br/>
-                  설명: {item.product_description}
-                  <br/>
-                  <Button className = "itemButton"   data={item.company_id} onClick = {(e, item) => {itemBtn(e, item)}}>자세히보기</Button>
-                  </div>
-                  </ImageContainer>
-              </div>
-            );
-          })}
+{data.show ? 
+  data.props.map((item) => {
+    return (
+      <div className = "cardHead" key={item.company_id}>  
+      <ImageContainer>
+      <Image src={item.structValue.fields.img_url} />
+          <div className = "cardContent">
+          {item.structValue.fields.title.stringValue}
+          <br/>
+          </div>
+          </ImageContainer>
+      </div>
+    );
+  })
+:
+data.props.map((item) => {
+  return (
+    <div className = "cardHead" key={item.company_id}>  
+    <ImageContainer>
+    <Image src={item.product_img[0].img_url} />
+        <div className = "cardContent">
+        상품명 : {item.product_name}
+        <br/>
+        설명: {item.product_description}
+        <br/>
+        <Button className = "itemButton"   data={item.company_id} onClick = {(e, item) => {itemBtn(e, item)}}>자세히보기</Button>
+        </div>
+        </ImageContainer>
+    </div>
+  );
+})
+}
+    
         </StyledSlider>
       </Container>
     );

@@ -26,7 +26,6 @@ const Message = () => {
     return (
       <>
     <div className = "testClass" ref = {boxs} >
-    
   {value.state.msgList.map((e,index) => 
   e.user ? 
   <div style ={{marginRight : "20px"}} key = {index}>
@@ -51,20 +50,20 @@ const Message = () => {
   </div>
   { e.type ? 
     <div className="cards" >
-    <Cards props = {e.data} />
+    <Cards props = {e.data} show = {e.show} />
    </div>
    :
    ""
   }
   {e.type2 ? 
     <div className = "category">
-    <Category/> 
+    <Category  /> 
     </div>:
     ""
   }
   {e.notice ? 
     <div className = "notice " >
-    <Notice/> 
+    <Notice props = {e.data} /> 
     </div>:
     ""
   }
@@ -83,3 +82,47 @@ const Message = () => {
 };
 
 export default Message;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -2,7 +2,7 @@ import React,{useContext} from 'react';
 import { Button } from 'antd';
 import MessageContext from '../../../context/MessageContext'
 import './Category.scss'
-const Category = () => {
+const Category = (props) => {
     const value = useContext(MessageContext)
     return (
         <>
@@ -14,12 +14,12 @@ const Category = () => {
         <div className="clear"></div>
         <Button className="CategoryBtn" block onClick = {value.actions.goodsAskList} >자주 묻는 질문 안내</Button>
         <div className="clear"></div>
-        <Button className="CategoryBtn" block onClick = {value.actions.goodsReser}>상품 예약 안내</Button>
+        <Button className="CategoryBtn" block onClick = {value.actions.goodsReser}>상품 검색 사용 안내</Button>
         <div className="clear"></div>
-        <Button className="CategoryBtn" block onClick = {value.actions.reserSearch}> 상품 예약 조회 안내</Button>
+        <Button className="CategoryBtn" block onClick = {value.actions.reserSearch}> 상품 예약 조회 사용 안내</Button>
         <div className="clear"></div>
         <Button className="CategoryBtn" style = {{marginBottom : "20px"}}
-        onClick = {value.actions.cancel} block>상품 예약 취소 안내</Button>
+        onClick = {value.actions.cancel} block>상품 예약 취소 사용 안내</Button>
         <div className="clear"></div>
         </div>
         </>
