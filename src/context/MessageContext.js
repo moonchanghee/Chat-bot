@@ -17,7 +17,7 @@ const MsgProvider = ({children }) => {
     const [msgList, setMsgList] = useState([{
         user : 0, msg : "안녕하세요. 주문 도움 챗봇 입니다. 무엇을 도와드릴까요?",type : 0 ,type2 : 1
     }])
-
+    const [listbasic, setListbasic] = useState([{}])
 
     useEffect(() => {
         if(textMsg.length > 0 && cardtype === "text_basic") {
@@ -28,32 +28,18 @@ const MsgProvider = ({children }) => {
      
     
     useEffect(() => {
+        console.log("cardtype", cardtype)
             if(cardtype === "card_product"){
             setMsgList(() => [...msgList ,{user : 0, msg : textMsg,type : 1, type2 : 0,data : msgData ,show : 0}])
         }
-    },[ msgData || cardtype || msgCount ])
+        if(cardtype === "list_basic"){
+            setMsgList( () => [...msgList ,{user : 0, msg : textMsg,type : 0 ,type2 : 0, notice : 1, data :listbasic }])
+        }
+        if(cardtype === "card_reservation"){
+            setMsgList(() => [...msgList ,{user : 0, msg : textMsg,type : 1, type2 : 0,data : listbasic, show : 1}])
+        }
+    },[ listbasic , msgData || cardtype || msgCount ])
 
-
-    const onSearch = ()=>{
-        setInputVal("")
-        setMsgList(()=>[...msgList, {user:1, msg: inputVal, type : 0 ,type2 : 0  }] )
-
-        Axios.post("http://35.216.1.241:3000/api/dialogflow/textQuery", {text : inputVal}).then(e => {
-            console.log(e)
-            setCardType(e.data.type)
-            setTextMsg(e.data.resultText)
-            setMsgCount(e.data.id)
-            if(e.data.type === "card_product"){
-                if(e.data.resultData.data.length === 0){
-                    console.log("데이터 없음")
-                }else{
-                    setMsgData(e.data.resultData.data)
-                }
-            }
-        }).catch((e) => {
-            console.log(e)
-        })
-    };
     const onChaneVal = (e) => {
         setInputVal(e.currentTarget.value)
     }
@@ -84,6 +70,31 @@ const MsgProvider = ({children }) => {
         let data = "Reservation_Cancel"
         postFunc(data)
     }
+
+    const onSearch = ()=>{
+        setInputVal("")
+        setMsgList(()=>[...msgList, {user:1, msg: inputVal, type : 0 ,type2 : 0  }] )
+
+        Axios.post("http://35.216.1.241:3000/api/dialogflow/textQuery", {text : inputVal}).then(e => {
+            console.log(e)
+            setCardType(e.data.type)
+            setTextMsg(e.data.resultText)
+            setMsgCount(e.data.id)
+            if(e.data.type === "card_product"){
+                if(e.data.resultData.data.length === 0){
+                    console.log("데이터 없음")
+                }else{
+                    setMsgData(e.data.resultData.data)
+                }
+            }        if(e.data.type === "list_basic"){ 
+                console.log("공지사항")
+                  setListbasic(e.data.resultData.listValue.values)
+                }
+
+        }).catch((e) => {
+            console.log(e)
+        })
+    };
 
     const postFunc = (e) => {
         Axios.post("http://35.216.1.241:3000/api/dialogflow/eventQuery", {event : e}).then((e) => {

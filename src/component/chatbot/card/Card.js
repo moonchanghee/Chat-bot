@@ -25,6 +25,11 @@ const Image = styled.img`
 max-width:100%;
 height: 170px;
 `;
+const Image1 = styled.img`
+max-width:100%;
+height: 200px;
+margin-left : 18px;
+`;
 
   const Card = (data) => {
 
@@ -73,8 +78,8 @@ height: 170px;
     return (
       <div className = "cardHead" key={item.company_id}>  
       <ImageContainer>
-      <Image src={item.structValue.fields.img_url} />
-          <div className = "cardContent">
+      <Image1 src={item.structValue.fields.img_url.stringValue} />
+          <div className = "cardContent_1" >
           {item.structValue.fields.title.stringValue}
           <br/>
           </div>
