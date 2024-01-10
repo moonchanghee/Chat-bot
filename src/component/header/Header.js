@@ -1,6 +1,5 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import { CloseCircleOutlined,SearchOutlined } from '@ant-design/icons';
 const Header = () => {
     return (
         <div>

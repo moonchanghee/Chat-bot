@@ -21,14 +21,12 @@ const MsgProvider = ({children }) => {
 
     useEffect(() => {
         if(textMsg.length > 0 && cardtype === "text_basic") {
-            console.log("text")
             setMsgList(() => [...msgList ,{user : 0, msg : textMsg, type : 0, type2 : 0}])
         }
     },[textMsg && cardtype && msgCount])
-     
-    
+
+
     useEffect(() => {
-        console.log("cardtype", cardtype)
             if(cardtype === "card_product"){
             setMsgList(() => [...msgList ,{user : 0, msg : textMsg,type : 1, type2 : 0,data : msgData ,show : 0}])
         }
@@ -44,7 +42,6 @@ const MsgProvider = ({children }) => {
         setInputVal(e.currentTarget.value)
     }
     const guide = () => {
-        console.log("공지사항 안내")
         let data = "Notice"
         postFunc(data)
     }
@@ -76,7 +73,6 @@ const MsgProvider = ({children }) => {
         setMsgList(()=>[...msgList, {user:1, msg: inputVal, type : 0 ,type2 : 0  }] )
 
         Axios.post("http://35.216.1.241:3000/api/dialogflow/textQuery", {text : inputVal}).then(e => {
-            console.log(e)
             setCardType(e.data.type)
             setTextMsg(e.data.resultText)
             setMsgCount(e.data.id)
@@ -86,8 +82,7 @@ const MsgProvider = ({children }) => {
                 }else{
                     setMsgData(e.data.resultData.data)
                 }
-            }        if(e.data.type === "list_basic"){ 
-                console.log("공지사항")
+            }        if(e.data.type === "list_basic"){
                   setListbasic(e.data.resultData.listValue.values)
                 }
 
@@ -98,8 +93,7 @@ const MsgProvider = ({children }) => {
 
     const postFunc = (e) => {
         Axios.post("http://35.216.1.241:3000/api/dialogflow/eventQuery", {event : e}).then((e) => {
-        console.log(e)
-          if(e.data.type === "list_basic"){ 
+          if(e.data.type === "list_basic"){
         setMsgList( () => [...msgList ,{user : 0, msg : e.data.resultText,type : 0 ,type2 : 0, notice : 1, data :e.data.resultData.listValue.values }])
         }
         if( e.data.type === "card_reservation"){
